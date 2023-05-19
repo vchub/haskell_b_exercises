@@ -7,6 +7,7 @@ import Test.Lecture1 (lecture1Spec)
 import Test.Lecture2 (lecture2Spec)
 import Test.Lecture3 (lecture3Spec)
 import Test.Lecture4 (lecture4Spec)
+import Test.Misc (miscSpec)
 
 
 main :: IO ()
@@ -16,7 +17,8 @@ main = do
     hSetEncoding stderr utf8
 
     hspec $ describe "Tests" $ do
-        lecture1Spec
+	lecture1Spec
         lecture2Spec
         lecture3Spec
         lecture4Spec
+	miscSpec

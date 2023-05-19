@@ -1,0 +1,4 @@
+:set -fwarn-unused-binds -fwarn-unused-imports
+:set -isrc
+:load Lecture1 Test.Lecture1 Test.Misc
+-- :run lecture1Spec */

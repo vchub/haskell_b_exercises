@@ -14,7 +14,7 @@ maintainer:          Haskell Beginners 2022 Course <haskell.beginners2022@gmail.
 copyright:           2021-2022 Haskell Beginners 2022 Course
 build-type:          Simple
 extra-doc-files:     README.md
-tested-with:         GHC == 9.2.5
+tested-with:         GHC == 9.2.7
 
 source-repository head
   type:                git

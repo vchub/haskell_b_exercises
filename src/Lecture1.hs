@@ -39,6 +39,7 @@ module Lecture1
 its behaviour, possible types for the function arguments and write the
 type signature explicitly.
 -}
+makeSnippet:: Int->String-> String
 makeSnippet limit text = take limit ("Description: " ++ text) ++ "..."
 
 {- | Implement a function that takes two numbers and finds sum of
@@ -54,20 +55,25 @@ Explanation: @sumOfSquares 3 4@ should be equal to @9 + 16@ and this
 is 25.
 -}
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-sumOfSquares x y = error "TODO!"
+-- sumOfSquares:: Integer a => a-> a -> a
+-- sumOfSquares:: Int -> Int -> Int
+sumOfSquares::  Int -> Int -> Int
+sumOfSquares x y = x^(2::Int) + y^(2::Int)
 
 {- | Implement a function that returns the last digit of a given number.
 
 >>> lastDigit 42
 2
->>> lastDigit (-17)
+>>> lastDigit (2::Int)
 7
 
 🕯 HINT: use the @mod@ function
 
 -}
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-lastDigit n = error "lastDigit: Not implemented!"
+-- lastDigit n = error "lastDigit: Not implemented!"
+lastDigit:: Int -> Int
+lastDigit n = mod (abs n) 10
 
 {- | Write a function that takes three numbers and returns the
 difference between the biggest number and the smallest one.
@@ -81,7 +87,8 @@ and 1 is the smallest, and 7 - 1 = 6.
 Try to use local variables (either let-in or where) to implement this
 function.
 -}
-minmax x y z = error "TODO"
+minmax:: Integral a => a->a->a->a
+minmax x y z = (maximum [x, y, z]) - minimum [x, y, z]
 
 {- | Implement a function that takes a string, start and end positions
 and returns a substring of a given string from the start position to
@@ -98,7 +105,17 @@ start position can be considered as zero (e.g. substring from the
 first character) and negative end position should result in an empty
 string.
 -}
-subString start end str = error "TODO"
+subString:: Int-> Int -> String -> String
+subString _ _ [] = []
+subString _ end _ | end < 0 = []
+subString start end str | start < 0 = subString 0 end str
+subString start end (x:xs)
+  | start > 0 = subString (start -1) (end-1) xs
+  | end >= 0 = x : subString 0 (end-1) xs
+  | otherwise =[]
+
+
+
 
 {- | Write a function that takes a String — space separated numbers,
 and finds a sum of the numbers inside this string.
@@ -108,7 +125,8 @@ and finds a sum of the numbers inside this string.
 
 The string contains only spaces and/or numbers.
 -}
-strSum str = error "TODO"
+strSum:: String -> Int
+strSum str = sum $ map read (words str)
 
 {- | Write a function that takes a number and a list of numbers and
 returns a string, saying how many elements of the list are strictly
@@ -123,4 +141,10 @@ and lower than 6 elements (4, 5, 6, 7, 8 and 9).
 
 🕯 HINT: Use recursion to implement this function.
 -}
-lowerAndGreater n list = error "TODO"
+lowerAndGreater::Int-> [Int] -> String
+lowerAndGreater n xs = show n ++ " is greater than " ++ show less ++ " elements and lower than " ++ show greater ++ " elements"
+  where
+    less = length $ filter (<n) xs
+    greater = length $ filter (>n) xs
+
+-- :set formatprg=stylish-haskell
