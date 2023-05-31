@@ -34,7 +34,15 @@ ghcid-test:
 	ghcid -T="Test.Misc.main"
 	# ghcid -c="stack ghci"  --test="Test.Misc.main"
 
+.PHONY: quickcheck
+quickcheck:
+	ghcid -T="Test.QuickCheckTutor.main"
+
 .PHONY: test-l1
 test-l1:
 	stack test --file-watch :exercises-test --test-arguments='-m "Lecture 1"'
 	# stack test --file-watch :doctest-lecture1
+	
+.PHONY: current-test
+current-test:
+	ghcid -T="main"

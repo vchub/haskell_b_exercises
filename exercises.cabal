@@ -98,6 +98,7 @@ test-suite exercises-test
                      , hedgehog          >= 1.1 && < 1.3
                      , hedgehog-classes ^>= 0.2
                      , silently         ^>= 1.2
+		     , QuickCheck >=2.14
 
 test-suite doctest-lecture1
   import:              common-doctest

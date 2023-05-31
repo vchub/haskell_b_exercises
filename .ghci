@@ -1,4 +1,7 @@
 :set -fwarn-unused-binds -fwarn-unused-imports
 :set -isrc
-:load Lecture1 Test.Lecture1 Test.Misc
--- :run lecture1Spec */
+
+:load test/graham/Types.hs
+
+-- :load Test.QuickCheckTutor
+-- :load Lecture1 Test.Lecture1 Test.Misc
